@@ -34,13 +34,7 @@ Thanks to Eric Gross for the topic list:
 		* Check the average distance between the points and the centroids.
 		* If the distances withinthe sae cluster are close, then it's a good K.
 		* Find the K that is right at the downslope of the curve.
-* Map Reduce
-	* Know the stages.
-    	* Map
-    	* Reduce
-    	* Shuffle
-	* Know what a functional map-reduce is.
-		* Takes a function and does a map reduce of it.
+
 		
 ##Topics Done
 
@@ -56,3 +50,11 @@ Please update when you submit a pull request with new information.
 		* Users can easily change GET requests in the URL.
 		* GET requests store the information in the URL.
 	* #/some_URL - Takes you to the div(id = 'some_URL')
+
+* Map Reduce
+	* Know the stages.
+    	* Map
+    	* Reduce
+    	* Shuffle
+	* Know what a functional map-reduce is.
+		* Takes a function and does a map reduce of it.
