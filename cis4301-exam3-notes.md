@@ -17,6 +17,7 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 	* [Reduce](#reduce)
 	* [Google MapReduce Framework](#framework)
 	  * [Redundancy](#redundancy)
+	* [Functional MapReduce](#functional)
 
 ## HTML
 
@@ -91,11 +92,37 @@ have map operations performed on them. When the map operations are complete,
 the results are grouped by keys and sent off to machines that perform the
 reduction. This is called the **shuffle** step.
 
-#### Redundancy
-One advantage of the MapReduce framework is to redundantly assign one
-map/reduce operation to multiple machines. When working with huge data sets on
-distributed hardware, failure rates can be high, so redundancy helps ensure
-that a 'good' result gets through. Redundancy can also provide a performance
-benefit. If a computation needs to be completed quickly, it can be mapped to
-multiple machines that run in parallel -- just take the result that arrives
-first.
+### Functional
+A map or reduce does not necessarily have to return a 'value', it could return
+a function (one might even argue that a function **is** a value).
+Functional programming refers to a style in which functions are treated as
+first-class values - functions can take other functions as arguments and have
+functions as return values.
+
+The examples above demonstrate this. The code between curly braces forms a
+`block` (similar to a **lambda** or **anonymous function**). In the first
+example, the block `{|x| x + 5}` takes a single arguments (which it calls `x`)
+and returns the value `x + 5`. This block is passed as an argument to the `map`
+function, a function that expects some `enumerable` (in this case, the array
+`[1,2,3]`, and a block which it is to apply to each array element.
+
+Here is an example of a function that returns a function which will add some
+value to another:
+```
+def make_adder val
+  # return a procedure that will add val to whatever is passed in
+  return proc {|x| x + val}
+end
+```
+Lets make an adder that will add 3 to anything we give it
+```
+irb(main):012:0> adder = make_adder 3
+=> #<Proc:0x0000000215d928@(irb):9>
+rb(main):016:0> adder.yield 5
+=> 8
+irb(main):017:0> adder.yield -5
+=> -2
+```
+
+A program might chain together many such functions to eventually construct a
+function that does what you want.
