@@ -15,7 +15,7 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [MapReduce](#mapreduce)
 	* [Map](#map)
 	* [Reduce](#reduce)
-	* [Google MapReduce](#google mapreduce)
+	* [Google MapReduce Framework](#framework)
 	  * [Redundancy](#redundancy)
 
 ## HTML
@@ -81,7 +81,7 @@ irb(main):004:0> [1,2,3].reduce(:+)
 => 6
 ```
 
-### Google MapReduce
+### Framework
 Google noticed that they frequently had to perform a map followed by a reduce
 on huge sets of data and created a framework for performing this kind of work
 in a distributed manner.
