@@ -8,16 +8,6 @@ My Exam 3 review notes for CIS4301 Spring 2014. This repository is here in an ef
 
 Thanks to Eric Gross for the topic list:
 
-* HTML
-	* FORMS
-	* SUBMIT
-	* USING A METHOD (GET & POST)
-	    * Know the difference between the two.
-	    * Use POST for putting stuff into a database.
-	    * Use GET to just retrieve data from database.
-		* Users can easily change GET requests in the URL.
-		* GET requests store the information in the URL.
-	* #/some_URL - Takes you to the div(id = 'some_URL')
 * JDBC
 	* Cursor in database.
 		* It is an iterator, also the same as the ResultSet(Java).
@@ -54,4 +44,15 @@ Thanks to Eric Gross for the topic list:
 		
 ##Topics Done
 
-None! Please update when you submit a pull request with new information.
+Please update when you submit a pull request with new information.
+
+* HTML
+	* FORMS
+	* SUBMIT
+	* USING A METHOD (GET & POST)
+	    * Know the difference between the two.
+	    * Use POST for putting stuff into a database.
+	    * Use GET to just retrieve data from database.
+		* Users can easily change GET requests in the URL.
+		* GET requests store the information in the URL.
+	* #/some_URL - Takes you to the div(id = 'some_URL')
