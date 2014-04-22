@@ -21,12 +21,12 @@ Thanks to Eric Gross for the topic list:
 		* Start-up Cost | Estimated Cost | rows & width in bytes.
 	* ANALYZE gives back the analysis of the query plan.
 * Know steps of K-Means
-1. Choose K - # of clusters.
-2. Randomly place centroids.
-3. Assign Points to centroids.
-4. Average of all the points for each centroid.
-5. Update the location of centroids.
-6. Repeat 3 - 6 until no more updates on centroids.
+	1. Choose K - # of clusters.
+	2. Randomly place centroids.
+	3. Assign Points to centroids.
+	4. Average of all the points for each centroid.
+	5. Update the location of centroids.
+	6. Repeat 3 - 6 until no more updates on centroids.
 * Know use-cases of K-Means.
 	* Group together data with similar information and how they're relevant.
 	* Can group what type of data is being grouped togehter 
