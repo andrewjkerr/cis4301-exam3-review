@@ -12,6 +12,11 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [HTML](#html)
 	* [Forms](#forms)
 	* [#id](#pound-sign)
+* [MapReduce](#mapreduce)
+	* [Map](#map)
+	* [Reduce](#reduce)
+	* [Google MapReduce](#google mapreduce)
+	  * [Redundancy](#redundancy)
 
 ## HTML
 
@@ -67,8 +72,7 @@ irb(main):002:0> [1,2,3].reduce {|accumulator, element| accumulator + element}
 ```
 Compute the sum ((10 + 1) + 2) + 3 (using 10 as the initial accumulator value)
 ```
-irb(main):003:0> [1,2,3].reduce(10) {|accumulator, element| accumulator +
-element}
+irb(main):003:0> [1,2,3].reduce(10) {|accumulator, element| accumulator + element}
 => 16
 ```
 Compute the same sum, but just specify a binary operator
