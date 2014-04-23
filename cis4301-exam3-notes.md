@@ -322,7 +322,7 @@ Functional programming refers to a style in which functions are treated as
 first-class values - functions can take other functions as arguments and have
 functions as return values.
 
-The examples above demonstrate this. The code between curly braces forms a
+The examples below demonstrate this. The code between curly braces forms a
 `block` (similar to a **lambda** or **anonymous function**). In the first
 example, the block `{|x| x + 5}` takes a single arguments (which it calls `x`)
 and returns the value `x + 5`. This block is passed as an argument to the `map`
