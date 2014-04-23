@@ -12,6 +12,7 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [@chelseametcalf](https://www.github.com/chelseametcalf)
 * [@murphyslaw480](https://www.github.com/murphyslaw480)
 * Eric Gross
+* Dania Durnas
 
 ## Table of Contents
 
