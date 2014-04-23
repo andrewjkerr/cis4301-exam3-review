@@ -6,31 +6,8 @@ My Exam 3 review notes for CIS4301 Spring 2014. This repository is here in an ef
 
 ##Topics To-Do
 
-Thanks to Eric Gross for the topic list:
+Thanks to Eric Gross for the topic list.
 
-* Query with EXPLAIN & ANALYZE 
-	* EXPLAIN gives the tree of the query plan.
-		* Start-up Cost | Estimated Cost | rows & width in bytes.
-	* ANALYZE gives back the analysis of the query plan.
-* Know steps of K-Means
-	1. Choose K - # of clusters.
-	2. Randomly place centroids.
-	3. Assign Points to centroids.
-	4. Average of all the points for each centroid.
-	5. Update the location of centroids.
-	6. Repeat 3 - 6 until no more updates on centroids.
-* Know use-cases of K-Means.
-	* Group together data with similar information and how they're relevant.
-	* Can group what type of data is being grouped togehter 
-	    * i.e., types of dogs, age and salary of people.
-	* Things within a cluster are similar.
-	* Things between clusters are dis-similar.
-	* When do you have the best K?
-		* Check the average distance between the points and the centroids.
-		* If the distances withinthe sae cluster are close, then it's a good K.
-		* Find the K that is right at the downslope of the curve.
-
-		
 ##Topics Done
 
 Please update when you submit a pull request with new information.
@@ -50,6 +27,27 @@ Please update when you submit a pull request with new information.
 		* It is an iterator, also the same as the ResultSet(Java).
 	* PreparedStatements are faster because it's already partially parsed, and all you have to do is just insert a value where the '?' is placed within the prepared statement.
 	* Reflection Statement - Where the driver is.
+* Query with EXPLAIN & ANALYZE 
+	* EXPLAIN gives the tree of the query plan.
+		* Start-up Cost | Estimated Cost | rows & width in bytes.
+	* ANALYZE gives back the analysis of the query plan.
+* Know use-cases of K-Means.
+	* Group together data with similar information and how they're relevant.
+	* Can group what type of data is being grouped togehter 
+	    * i.e., types of dogs, age and salary of people.
+	* Things within a cluster are similar.
+	* Things between clusters are dis-similar.
+	* When do you have the best K?
+		* Check the average distance between the points and the centroids.
+		* If the distances withinthe sae cluster are close, then it's a good K.
+		* Find the K that is right at the downslope of the curve.
+* Know steps of K-Means
+	1. Choose K - # of clusters.
+	2. Randomly place centroids.
+	3. Assign Points to centroids.
+	4. Average of all the points for each centroid.
+	5. Update the location of centroids.
+	6. Repeat 3 - 6 until no more updates on centroids.
 * Map Reduce
 	* Know the stages.
     	* Map

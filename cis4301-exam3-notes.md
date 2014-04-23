@@ -11,6 +11,7 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [@andrewjkerr](https://www.github.com/andrewjkerr)
 * [@chelseametcalf](https://www.github.com/chelseametcalf)
 * [@murphyslaw480](https://www.github.com/murphyslaw480)
+* Eric Gross
 
 ## Table of Contents
 
@@ -26,6 +27,9 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 	* [Reflection Statement](#reflection-statement)
 * [EXPLAIN](#explain)
 * [ANALYZE](#analyze)
+* [K-Means](#k-means)
+	* [Steps](#steps)
+	* [Use-Cases](#use-cases)
 * [MapReduce](#mapreduce)
 	* [Map](#map)
 	* [Reduce](#reduce)
@@ -227,6 +231,32 @@ EXPLAIN SELECT * FROM foo;
 ## ANALYZE
 
 ANALYZE runs the query and shows performance stats which basically just gives back an analysis of the query plan. The main difference between ANALYZE and EXPLAIN is that ANALYZE actually causes the query to be executed - not just planned.
+
+## K-Means
+
+K-Means are used to group together data with smiliar information which can be used to identify distinct groups that the data represents.
+
+### Steps
+
+1. Choose K - # of clusters.
+2. Randomly place centroids.
+3. Assign Points to centroids.
+4. Average of all the points for each centroid.
+5. Update the location of centroids.
+6. Repeat 3 - 6 until no more updates on centroids.
+
+### Use-Cases
+* Group together data with similar information and how they're relevant.
+* Can group what type of data is being grouped togehter 
+    * i.e., types of dogs, age and salary of people.
+* Things within a cluster are similar.
+* Things between clusters are dis-similar.
+* When do you have the best K?
+	* Check the average distance between the points and the centroids.
+	* If the distances withinthe sae cluster are close, then it's a good K.
+	* Find the K that is right at the downslope of the curve.
+
+[Example here](http://home.deib.polimi.it/matteucc/Clustering/tutorial_html/AppletKM.html) (if you've installed Java, haha)
 
 ## MapReduce
 ### Map
