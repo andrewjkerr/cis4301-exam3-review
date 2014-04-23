@@ -3,7 +3,7 @@ __Compiled by: Andrew Kerr | [www.andrewjkerr.com](www.andrewjkerr.com)__
 
 ![Doge loves Databases!](https://scontent-a-dfw.xx.fbcdn.net/hphotos-frc3/t31.0-8/1498042_10201569571896659_1592321872_o.jpg)
 
-These notes are compiled from various places such as the course textbook, the various slides, [Ryan Roden-Corrent's really fantastic class notes](https://github.com/murphyslaw480/cis4301-notes), and the Internet.
+These notes are compiled from various places such as my own knowledge, Piazza, the course textbook, the various slides, [Ryan Roden-Corrent's really fantastic class notes](https://github.com/murphyslaw480/cis4301-notes), and the Internet.
 
 _Disclaimer: I am not responsible for any misinformation. If you use my notes and get a problem wrong because of it, it's not my fault. Seriously._
 
@@ -12,6 +12,13 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [HTML](#html)
 	* [Forms](#forms)
 	* [#id](#pound-sign)
+* [JDBC](#JDBC)
+	* [Example Code](#example-code)
+	* [Error Handling](#error-handling)
+	* [Cursor](#cursor)
+	* [Prepared Statements](#prepared-statements)
+		* [Examples](#prepared-statement-examples)
+	* [Reflection Statement](#reflection-statement)
 * [MapReduce](#mapreduce)
 	* [Map](#map)
 	* [Reduce](#reduce)
@@ -47,6 +54,147 @@ Christan recommends the following usage of GET/POST:
 In order to make the user jump to a certain id on the page, use a pound sign (a.k.a. a hashtag - for you tweeters out there) in the URL.
 
 For example, in order to jump to `<div id="testing">`, the URL would have to be `www.example.com/#testing`.
+	
+## JDBC
+
+_Note: Christan explicitly said that there would be no coding problems on the exam, so you should be able to ignore syntax._
+
+### Example Code
+
+```java
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class JDBCTest {
+
+  public static void main(String[] argv) {
+
+    System.out.println("-------- PostgreSQL "
+        + "JDBC Connection Testing ------------");
+
+    try {
+
+      // Load class
+      Class.forName("org.postgresql.Driver");
+
+    } catch (ClassNotFoundException e) {
+
+      System.out.println("Where is your PostgreSQL JDBC Driver? "
+          + "Include in your library path!");
+      e.printStackTrace();
+      return;
+
+    }
+    System.out.println("PostgreSQL JDBC Driver Registered!");
+
+    Connection connection = null;
+
+    try {
+      connection = DriverManager.getConnection(
+          "jdbc:postgresql://localhost:5432/my","user", "password");
+
+    } catch (SQLException e) {
+      System.out.println("Connection Failed! Check output console");
+      e.printStackTrace();
+      return;
+    }
+
+    // Did it connect?
+    if (connection != null) {
+      System.out.println("You made it, take control your database now!");
+    } else {
+      System.out.println("Failed to make connection!");
+    }
+    
+
+    // Create Prepated Statement
+    try {
+      PreparedStatement ps =
+        connection.prepareStatement("SELECT created_at, twtext FROM (SELECT * FROM tweets LIMIT 50) t WHERE twtext iLIKE ? LIMIT 1");
+
+      ps.setString(1, "%Dolphins%");
+
+      System.out.println(ps.toString());
+      System.out.println("Executing....");
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        // Indexed from 1
+        System.out.println(rs.getDate(1) + "|" + rs.getString(2));
+      }
+      rs.close();
+ 
+    } catch (SQLException e) {
+      System.out.println("Connection Failed! Check output console");
+      e.printStackTrace();
+      return;
+    }
+
+
+  }
+
+}
+```
+
+You can compile the above code by using `javac JDBC.java` and run it by using `java -classpath .:postgresql-9.1-903.jdbc4.jar JDBCTest` (make sure you download the jar from [here](http://jdbc.postgresql.org/download.html) first!)
+
+We'll be analyzing the code in the next few sections.
+
+### Error Handling
+
+According to the example, errors need to be handled when you:
+* Load the PostgreSQL class (catch (ClassNotFoundException e))
+* Connect to the database (catch (SQLException e))
+* Query the datbase (catch (SQLException e))
+
+### Cursor
+
+The ResultSet that is created when the query is excuted (`ResultSet rs = ps.executeQuery();`) contains a "cursor" that acts kind of like an iterator. This cursor moves through the results with next() (`while (rs.next())`) which iterates through the query or modifies the table.
+
+### Prepared Statements
+
+(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following!)
+
+In Java, a prepared statement is created by `PreparedStatement ps = connection.prepareStatement("SELECT * FROM table WHERE something=?");` where the ? is a parameter. The parameter is then set by `ps.setString("the parameter input");`
+
+A regular statement builds a query then sends it to a database then the database parses the statement and turns it into a query plan (Query -> Parser -> Rewriter -> Planner.) However, a prepared statement is already partially formed which is better for performance.
+
+Advantages to using a prepared statement include:
+
+* Speed: Prepared statements are faster because they are already partially compiled - all that's missing are the parameters!
+* Security: Prepared statements know when to accept paramters which helps prevent against SQL injections.
+* Overhead: Prepared statements have less overhead due to the fact that they are compiled and optimized only once and can be executed multiple times.
+
+The way that prepared statements work are:
+
+1. The DBMS parses, compiles, and performs query optimization on the statement template and stores the result without excuting it
+2. At a later time, the application supplies (or binds) values to the parameters and the DBMS will then execute the statement.
+
+#### Prepared Statement Examples
+
+Prepared Statement for INSERT:
+	
+```sql 
+PREPARE fooplan (int, text, bool, numeric) AS 
+INSERT INTO foo VALUES($1, $2, $3, $4); 
+EXECUTE fooplan(1, 'Hunter Valley', 't', 200.00); 
+```
+
+Prepared Statement for SELECT:
+
+```sql
+PREPARE usrrptplan (int) AS 
+	SELECT * FROM users u, logs l WHERE u.usrid=$1 AND 
+	u.usrid=l.usrid AND l.date = $2; 
+EXECUTE usrrptplan(1, current_date); 
+```
+
+### Reflection Statement
+
+A reflection statement tells the program where the driver is. In this case, it's telling the program where the PostgreSQL driver is.
 
 ## MapReduce
 ### Map

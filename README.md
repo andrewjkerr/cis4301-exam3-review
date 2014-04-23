@@ -8,11 +8,6 @@ My Exam 3 review notes for CIS4301 Spring 2014. This repository is here in an ef
 
 Thanks to Eric Gross for the topic list:
 
-* JDBC
-	* Cursor in database.
-		* It is an iterator, also the same as the ResultSet(Java).
-	* PreparedStatements are faster because it's already partially parsed, and all you have to do is just insert a value where the '?' is placed within the prepared statement.
-	* Reflection Statement - Where the driver is.
 * Query with EXPLAIN & ANALYZE 
 	* EXPLAIN gives the tree of the query plan.
 		* Start-up Cost | Estimated Cost | rows & width in bytes.
@@ -50,7 +45,11 @@ Please update when you submit a pull request with new information.
 		* Users can easily change GET requests in the URL.
 		* GET requests store the information in the URL.
 	* #/some_URL - Takes you to the div(id = 'some_URL')
-
+* JDBC
+	* Cursor in database.
+		* It is an iterator, also the same as the ResultSet(Java).
+	* PreparedStatements are faster because it's already partially parsed, and all you have to do is just insert a value where the '?' is placed within the prepared statement.
+	* Reflection Statement - Where the driver is.
 * Map Reduce
 	* Know the stages.
     	* Map
