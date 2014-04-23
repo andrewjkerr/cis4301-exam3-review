@@ -269,6 +269,9 @@ K-Means are used to group together data with smiliar information which can be us
 [Example here](http://home.deib.polimi.it/matteucc/Clustering/tutorial_html/AppletKM.html) (if you've installed Java, haha)
 
 ## MapReduce
+
+Good video on map reduce: [https://www.youtube.com/watch?v=HFplUBeBhcM](https://www.youtube.com/watch?v=HFplUBeBhcM) (thanks Dania!)
+
 ### Map
 Given a function `f(x)` and a list `[a1, a2, a3]`, return a list
 containing the elements `[f(a1), f(a2), f(a3)]`. For example (ruby syntax):
