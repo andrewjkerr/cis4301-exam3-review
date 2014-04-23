@@ -167,6 +167,8 @@ According to the example, errors need to be handled when you:
 
 The ResultSet that is created when the query is excuted (`ResultSet rs = ps.executeQuery();`) contains a "cursor" that acts kind of like an iterator. This cursor moves through the results with next() (`while (rs.next())`) which iterates through the query or modifies the table.
 
+The other useful methods in ResultSet are getString(i), getInt(i), getFloat(i), and other analogous methods for the other types that SQL values can take. Each of these return the ith component of the tuple currently selected by the tuple. Looking at the example above, we use `getDate(1)` and `getString(2)` because the date comes first while the string comes second in the schema.
+
 ### Prepared Statements
 
 (Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on prepared statements! Some more on prepared statements added by [Meghan](https://github.com/meghanking/) to expand on the subject and fixing an error below)
