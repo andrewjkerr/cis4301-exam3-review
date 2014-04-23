@@ -12,6 +12,8 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [@chelseametcalf](https://www.github.com/chelseametcalf)
 * [@murphyslaw480](https://www.github.com/murphyslaw480)
 * Eric Gross
+* Dania Durnas
+* [@meghanking](https://www.github.com/meghanking)
 
 ## Table of Contents
 
@@ -167,7 +169,7 @@ The ResultSet that is created when the query is excuted (`ResultSet rs = ps.exec
 
 ### Prepared Statements
 
-(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on prepared statements!) (Some more on prepared statements added by [Meghan](https://github.com/meghanking/) to expand on the subject (and fix an error below))
+(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on prepared statements! Some more on prepared statements added by [Meghan](https://github.com/meghanking/) to expand on the subject and fixing an error below)
 
 In Java, a prepared statement is created by `PreparedStatement ps = connection.prepareStatement("SELECT * FROM table WHERE something=?");` where the ? is a parameter. The parameter is then set by `ps.setString(1, "the parameter input");`
 
