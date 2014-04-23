@@ -244,6 +244,8 @@ ANALYZE runs the query and shows performance stats which basically just gives ba
 
 K-Means are used to group together data with smiliar information which can be used to identify distinct groups that the data represents.
 
+Good video on K-Means: https://www.youtube.com/watch?v=zHbxbb2ye3E (Thanks Dania!) If you skip to 1:33, there's a great demo using playing cards.
+
 ### Steps
 
 1. Choose K - # of clusters.
