@@ -161,7 +161,7 @@ We'll be analyzing the code in the next few sections.
 According to the example, errors need to be handled when you:
 * Load the PostgreSQL class (catch (ClassNotFoundException e))
 * Connect to the database (catch (SQLException e))
-* Query the datbase (catch (SQLException e))
+* Query the database (catch (SQLException e))
 
 ### Cursor
 
