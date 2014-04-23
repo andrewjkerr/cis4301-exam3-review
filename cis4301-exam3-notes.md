@@ -237,7 +237,7 @@ ANALYZE runs the query and shows performance stats which basically just gives ba
 
 K-Means are used to group together data with smiliar information which can be used to identify distinct groups that the data represents.
 
-Good video on K-Means: [https://www.youtube.com/watch?v=zHbxbb2ye3E](https://www.youtube.com/watch?v=zHbxbb2ye3E)(Thanks Dania!) If you skip to 1:33, there's a great demo using playing cards.
+Good video on K-Means: [https://www.youtube.com/watch?v=zHbxbb2ye3E](https://www.youtube.com/watch?v=zHbxbb2ye3E) (Thanks Dania!) If you skip to 1:33, there's a great demo using playing cards.
 
 ### Steps
 
@@ -262,6 +262,9 @@ Good video on K-Means: [https://www.youtube.com/watch?v=zHbxbb2ye3E](https://www
 [Example here](http://home.deib.polimi.it/matteucc/Clustering/tutorial_html/AppletKM.html) (if you've installed Java, haha)
 
 ## MapReduce
+
+Good video on map reduce: [https://www.youtube.com/watch?v=HFplUBeBhcM](https://www.youtube.com/watch?v=HFplUBeBhcM) (thanks Dania!)
+
 ### Map
 Given a function `f(x)` and a list `[a1, a2, a3]`, return a list
 containing the elements `[f(a1), f(a2), f(a3)]`. For example (ruby syntax):
