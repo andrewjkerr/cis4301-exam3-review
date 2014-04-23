@@ -24,6 +24,8 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 	* [Prepared Statements](#prepared-statements)
 		* [Examples](#prepared-statement-examples)
 	* [Reflection Statement](#reflection-statement)
+* [EXPLAIN](#explain)
+* [ANALYZE](#analyze)
 * [MapReduce](#mapreduce)
 	* [Map](#map)
 	* [Reduce](#reduce)
@@ -161,7 +163,7 @@ The ResultSet that is created when the query is excuted (`ResultSet rs = ps.exec
 
 ### Prepared Statements
 
-(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following!)
+(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on prepared statements!)
 
 In Java, a prepared statement is created by `PreparedStatement ps = connection.prepareStatement("SELECT * FROM table WHERE something=?");` where the ? is a parameter. The parameter is then set by `ps.setString("the parameter input");`
 
@@ -200,6 +202,31 @@ EXECUTE usrrptplan(1, current_date);
 ### Reflection Statement
 
 A reflection statement tells the program where the driver is. In this case, it's telling the program where the PostgreSQL driver is.
+
+## EXPLAIN
+
+(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on EXPLAIN!)
+
+EXPLAIN provides information on the query plan and gives a query tree as well. This information includes start up cost, estimated cost, and rows/width in bytes.
+
+The query tree of a query plan is a tree of plan nodes. The nodes are the bottom level are scan nodes: they return raw nodes from a table. 
+
+The output of EXPLAIN has one line for each node in the plan tree and shows the basic node type and the cost estimates that the planner made for the execution of that plan node. Additional indented lines may appear that show additional properties of the node. However, the very first line (the summary line for the topmost node) has the estimated total execution cost for the plan. It is this number that the planner seeks to minimize.
+
+Example:
+
+```
+EXPLAIN SELECT * FROM foo;
+
+                       QUERY PLAN
+---------------------------------------------------------
+ Seq Scan on foo  (cost=0.00..155.00 rows=10000 width=4)
+(1 row)
+```
+
+## ANALYZE
+
+ANALYZE runs the query and shows performance stats which basically just gives back an analysis of the query plan. The main difference between ANALYZE and EXPLAIN is that ANALYZE actually causes the query to be executed - not just planned.
 
 ## MapReduce
 ### Map
