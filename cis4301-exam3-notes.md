@@ -8,9 +8,9 @@ These notes are compiled from various places such as my own knowledge, Piazza, t
 _Disclaimer: I am not responsible for any misinformation. If you use my notes and get a problem wrong because of it, it's not my fault. Seriously._
 
 ## Contributors
-* @andrewjkerr
-* @chelseametcalf
-* @murphyslaw480
+* [@andrewjkerr](https://www.github.com/andrewjkerr)
+* [@chelseametcalf](https://www.github.com/chelseametcalf)
+* [@murphyslaw480](https://www.github.com/murphyslaw480)
 
 ## Table of Contents
 
