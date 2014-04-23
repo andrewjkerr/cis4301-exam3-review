@@ -12,7 +12,6 @@ _Disclaimer: I am not responsible for any misinformation. If you use my notes an
 * [@chelseametcalf](https://www.github.com/chelseametcalf)
 * [@murphyslaw480](https://www.github.com/murphyslaw480)
 * Eric Gross
-* Dania Durnas
 
 ## Table of Contents
 
@@ -168,9 +167,15 @@ The ResultSet that is created when the query is excuted (`ResultSet rs = ps.exec
 
 ### Prepared Statements
 
-(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on prepared statements!)
+(Thanks to [Chelsea](https://twitter.com/swordsncarrots) for providing most of the following information on prepared statements!) (Some more on prepared statements added by [Meghan](https://github.com/meghanking/) to expand on the subject (and fix an error below))
 
-In Java, a prepared statement is created by `PreparedStatement ps = connection.prepareStatement("SELECT * FROM table WHERE something=?");` where the ? is a parameter. The parameter is then set by `ps.setString("the parameter input");`
+In Java, a prepared statement is created by `PreparedStatement ps = connection.prepareStatement("SELECT * FROM table WHERE something=?");` where the ? is a parameter. The parameter is then set by `ps.setString(1, "the parameter input");`
+
+Prepared statements can have more than one ? (where the ? is a parameter as before) such as `PreparedStatement ps = connection.prepareStatement("SELECT * FROM table WHERE something=? AND somethingelse=?");`. To denote the different parameters(aka, the ?'s), change the parameter index (the first arguement of the set method) which starts at 1.
+
+Prepared Statements can also set more than just strings. You can set most foundational datatypes by calling each by their associated method defined on PreparedStatement, such as `ps.setInt(2, 15);` or `ps.setBoolean(3, true);`. This also makes PreparedStatements powerful since it allows for type-checking before an execution (see Security below).
+
+These are executed by calling `ps.executeQuery();` which returns a ResultSet. Be warned, this can throw SQLExceptions since you will be interacting with the database.
 
 A regular statement builds a query then sends it to a database then the database parses the statement and turns it into a query plan (Query -> Parser -> Rewriter -> Planner.) However, a prepared statement is already partially formed which is better for performance.
 
@@ -236,8 +241,6 @@ ANALYZE runs the query and shows performance stats which basically just gives ba
 ## K-Means
 
 K-Means are used to group together data with smiliar information which can be used to identify distinct groups that the data represents.
-
-Good video on K-Means: [https://www.youtube.com/watch?v=zHbxbb2ye3E](https://www.youtube.com/watch?v=zHbxbb2ye3E)(Thanks Dania!) If you skip to 1:33, there's a great demo using playing cards.
 
 ### Steps
 
